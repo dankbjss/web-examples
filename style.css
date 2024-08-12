@@ -1,0 +1,519 @@
+/* Variables for colors and fonts */
+:root {
+    --text-color: #333;
+    --primary-color: #4CAF50;
+    --secondary-color: #f1f1f1;
+    --font-family: 'Roboto', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 1.5rem;
+    --font-size-small: 0.875rem;
+    --card-background: #f9f9f9;
+    --card-border: #ddd;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --card-radius: 8px;
+    --button-background: #4CAF50;
+    --button-color: #f9f9f9;
+    --button-hover-background: #45a049;
+    --button-border-radius: 12px;
+    --button-padding: 10px 20px;
+    --button-font-size: 1rem;
+    --link-color: #4CAF50;
+    --link-hover-color: #45a049;
+    --input-background: #f9f9f9;
+    --input-border: #ccc;
+    --input-text-color: #000;
+}
+
+[data-theme="dark"] {
+    --text-color: #f1f1f1;
+    --primary-color: #2196F3;
+    --secondary-color: #333;
+    --card-background: #444;
+    --card-border: #333;
+    --card-shadow: rgba(0, 0, 0, 0.5);
+    --button-background: #2196F3;
+    --button-hover-background: #1e88e5;
+    --button-color: #fff;
+    --link-color: #2196F3;
+    --link-hover-color: #1e88e5;
+    --input-background: #555;
+    --input-border: #444;
+    --input-text-color: #fff;
+}
+
+/* Global styles */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary-color);
+    z-index: 1000;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+
+
+
+
+p {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+code {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Button styles */
+button {
+    background-color: var(--button-background);
+    color: var(--button-color);
+    border: none;
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-background);
+}
+
+/* Input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    min-width: 8rem;
+    width: fit-content;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--input-background);
+    color: var(--input-text-color);
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: transparent;
+}
+
+/* Utility Classes */
+.card {
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.centred-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.centred-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.box {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-background);
+    overflow: auto;
+}
+
+/* Styles for a switch checkbox */
+#switch {
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    background: lightgrey;
+    height: 1.65rem;
+    width: 2.75rem;
+    vertical-align: middle;
+    border-radius: 2rem;
+    box-shadow: 0px 1px 3px #0003 inset;
+    transition: 0.25s linear background;
+}
+
+#switch::before {
+    content: '';
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #fff;
+    border-radius: 1.2rem;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    box-shadow: 0px 1px 3px #0003;
+    transition: 0.25s linear transform;
+    transform: translateX(0rem);
+}
+
+#switch:checked {
+    background: var(--primary-color);
+}
+
+#switch:checked::before {
+    transform: translateX(1rem);
+}
+
+#switch:focus-visible {
+    outline: 2px solid dodgerblue;
+    outline-offset: 2px;
+}
+
+/* Make the summary tag explicitly interactble */
+summary:hover {
+    cursor: pointer;
+}
+
+/* Dropdown stylings */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown > input[type="checkbox"] {
+    position: absolute;
+    left: -100vw;
+  }
+  
+  .dropdown > label,
+  .dropdown > a[role="button"] {
+    display: inline-block;
+    padding: 6px 15px;
+    color: var(--input-text-color);
+    line-height: 1.5em;
+    text-decoration: none;
+    border: 1px solid var(--input-border);
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  
+  .dropdown > label:hover,
+  .dropdown > a[role="button"]:hover,
+  .dropdown > a[role="button"]:focus {
+    border-color: var(--input-border);
+  }
+  
+  .dropdown > label:after,
+  .dropdown > a[role="button"]:after {
+    content: "\25BC";
+    display: inline-block;
+    margin-left: 6px;
+  }
+  
+  .dropdown > ul {
+    position: absolute;
+    z-index: 999;
+    display: block;
+    left: -100vw;
+    top: calc(1.5em + 14px);
+    border: 1px solid var(--input-border);
+    background: var(--card-background);
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 3px 8px var(--card-shadow);
+    -moz-box-shadow: 0 3px 8px var(--card-shadow);
+    box-shadow: 0 3px 8px var(--card-shadow);
+  }
+  
+  .dropdown > ul a {
+    display: block;
+    padding: 6px 15px;
+    text-decoration: none;
+    color: var(--input-text-color);
+  }
+  
+  .dropdown > ul a:hover,
+  .dropdown > ul a:focus {
+    background: var(--input-background);
+  }
+  
+  .dropdown > input[type="checkbox"]:checked ~ ul,
+  .dropdown > ul:target {
+    left: 0;
+  }
+  
+  .dropdown > [type="checkbox"]:checked + label:after,
+  .dropdown > ul:target ~ a:after {
+    content: "\25B2";
+  }
+  
+  .dropdown a.close {
+    display: none;
+  }
+  
+  .dropdown > ul:target ~ a.close {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-indent: -100vw;
+    z-index: 1000;
+  }
+
+
+/* Dialog stylings */
+#modal-dialog {
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* Distinguish between the top and bottom layers when opening a modal dialog  */
+#modal-dialog::backdrop {
+    background: #fff5;
+    backdrop-filter: blur(4px);
+}
+
+/* Transition the dialog (currently only in firefox & chromium) */
+#modal-dialog {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+
+    @starting-style {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Stylings for creating a dynamic radio entry */
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+form #other-text {
+    display: none;
+}
+
+form:has(#other:checked) #other-text {
+    display: block;
+}
+
+/* Stylings for resizable elements */
+.resize-vertical {
+    resize: vertical;
+}
+
+.resize-horizontal {
+    resize: horizontal;
+}
+
+.resize-both {
+    resize: both;
+}
+
+/* Stylings for new morphism */
+.morph {
+    background: var(--secondary-color);
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.morph:hover {
+    box-shadow: 12px 12px 12px var(--text-color), -10px -10px 10px var(--secondary-color);
+    transition: .2s ease-in-out box-shadow;
+}
+
+/* Stylings for text gradients */
+.gradient {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-clip: text;
+    color: transparent;
+}
+
+/* Responsive design */
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.125rem;
+    }
+
+    main {
+        max-width: 1200px;
+        padding: 2rem;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    section {
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    button {
+        font-size: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: var(--font-size-small);
+    }
+
+    h1 {
+        font-size: var(--font-size-large);
+    }
+
+    main {
+        padding: 0.5rem;
+    }
+
+    header {
+        text-align: left;
+    }
+
+    section {
+        padding: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: var(--font-size-small);
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 0.875rem;
+    }
+
+    button {
+        font-size: 0.875rem;
+        width: auto;
+        padding: 0.5rem 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 0.75rem;
+    }
+}
+
+/* If the user prefers a smooth scroll make it smooth */
+@media(prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
