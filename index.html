@@ -19,22 +19,27 @@
     <header>
         <nav>
             <a href="index.html" class="active">Home</a>
-            <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
-                hx-swap="innerHTML" id="page-select">
-                <option selected></option>
-                <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
-                <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
-                <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
-                <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
-                <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
-                <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
-                <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
-                <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
-                <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
-                <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
-            </select>
+            <label for="page-select">Components:
+                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                        hx-swap="innerHTML" id="page-select">
+                    <option selected></option>
+                    <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
+                    <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
+                    <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
+                    <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
+                    <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
+                    <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
+                    <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
+                    <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
+                    <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
+                    <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
+                </select>
+            </label>
+
             <div class="centred-column">
-                <input type="checkbox" class="switch" id="theme-switch" />
+                <label for="theme-switch">
+                    <input type="checkbox" class="switch" id="theme-switch" />
+                </label>
             </div>
         </nav>
         <h1>Web Components</h1>
@@ -54,7 +59,7 @@
                 installing a single package.
             </p>
             <p>
-                When something is too comlex for just HTML and CSS to achieve, there still might not be any need for
+                When something is too complex for just HTML and CSS to achieve, there still might not be any need for
                 javascript (kind of) thanks to a new kid on the block with some old school ideas:
                 <a href="https://htmx.org/" target="_blank">htmx</a>, and it's friend
                 <a href="https://hyperscript.org/" target="_blank">hyperscript</a>. Routin, state management and DOM
@@ -64,7 +69,7 @@
                 These components are mainly inspired by
                 <a href="https://www.youtube.com/watch?v=IP_rtWEMR0o" target="_blank">this</a> talk by Kilian Valkhof
                 and <a href="https://www.youtube.com/watch?v=PL3Odw-k8W4" target="_blank">this</a> video by the
-                youtuber Coding2GO, but also other places across the web where I've been able to take inspiriation
+                youtuber Coding2GO, but also other places across the web where I've been able to take inspiration
                 <sup class="footnote" _="on click get the next <details/> then toggle @open on it">[1]</sup> from
                 others.
             </p>
