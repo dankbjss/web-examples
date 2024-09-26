@@ -67,6 +67,31 @@ header {
     z-index: 1000;
 }
 
+/* Navbar */
+nav {
+    background-color: var(--card-background);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    a.active {
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        background-color: var(--button-background);
+        color: var(--button-color);
+    }
+
+    a.active:hover {
+        background-color: var(--button-hover-background);
+        color: var(--button-color)
+    }
+}
+
 footer {
     background-color: var(--secondary-color);
     color: var(--text-color);
@@ -83,10 +108,6 @@ h3 {
     color: var(--primary-color);
     text-align: center;
 }
-
-
-
-
 
 p {
     margin-bottom: 1rem;
@@ -132,8 +153,6 @@ button:hover {
 
 /* Input styles */
 input[type="text"],
-input[type="email"],
-input[type="password"],
 select,
 textarea {
     min-width: 8rem;
@@ -150,8 +169,6 @@ textarea {
 }
 
 input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
 select:focus,
 textarea:focus {
     border-color: var(--primary-color);
@@ -235,106 +252,100 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* Make the summary tag explicitly interactble */
+/* Accordion stylings */
 summary:hover {
     cursor: pointer;
 }
 
-/* Dropdown stylings */
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown > input[type="checkbox"] {
-    position: absolute;
-    left: -100vw;
-  }
-  
-  .dropdown > label,
-  .dropdown > a[role="button"] {
-    display: inline-block;
-    padding: 6px 15px;
-    color: var(--input-text-color);
-    line-height: 1.5em;
-    text-decoration: none;
-    border: 1px solid var(--input-border);
-    cursor: pointer;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-  }
-  
-  .dropdown > label:hover,
-  .dropdown > a[role="button"]:hover,
-  .dropdown > a[role="button"]:focus {
-    border-color: var(--input-border);
-  }
-  
-  .dropdown > label:after,
-  .dropdown > a[role="button"]:after {
-    content: "\25BC";
-    display: inline-block;
-    margin-left: 6px;
-  }
-  
-  .dropdown > ul {
-    position: absolute;
-    z-index: 999;
-    display: block;
-    left: -100vw;
-    top: calc(1.5em + 14px);
-    border: 1px solid var(--input-border);
-    background: var(--card-background);
-    padding: 6px 0;
-    margin: 0;
+details > summary {
     list-style: none;
-    width: 100%;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 3px 8px var(--card-shadow);
-    -moz-box-shadow: 0 3px 8px var(--card-shadow);
-    box-shadow: 0 3px 8px var(--card-shadow);
-  }
-  
-  .dropdown > ul a {
-    display: block;
-    padding: 6px 15px;
-    text-decoration: none;
-    color: var(--input-text-color);
-  }
-  
-  .dropdown > ul a:hover,
-  .dropdown > ul a:focus {
-    background: var(--input-background);
-  }
-  
-  .dropdown > input[type="checkbox"]:checked ~ ul,
-  .dropdown > ul:target {
-    left: 0;
-  }
-  
-  .dropdown > [type="checkbox"]:checked + label:after,
-  .dropdown > ul:target ~ a:after {
-    content: "\25B2";
-  }
-  
-  .dropdown a.close {
-    display: none;
-  }
-  
-  .dropdown > ul:target ~ a.close {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    text-indent: -100vw;
-    z-index: 1000;
-  }
+}
 
+/* Footnote stylings */
+.footnote:hover {
+    cursor: help;
+}
+
+/* Chip stylings */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 24px;
+    font-size: var(--font-size-small);
+    line-height: 24px;
+    border-radius: 12px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    margin: 4px;
+    font-family: var(--font-family);
+    border: 1px solid var(--input-border);
+    transition: background-color 0.3s ease;
+}
+
+.chip:hover {
+    background-color: var(--input-background);
+}
+
+.chip-label {
+    padding-right: 6px;
+    padding-left: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chip-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: none;
+    background-color: var(--button-background);
+    color: var(--button-color);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    margin-left: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.chip-delete:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-background);
+}
+
+.chip-delete:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--card-shadow);
+}
+
+button.chip-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background-color: #9e9e9e;
+    color: #e0e0e0;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    margin-left: 4px;
+}
+
+button.chip-delete:hover {
+    background-color: #757575;
+}
+
+button.chip-delete:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
 
 /* Dialog stylings */
 #modal-dialog {

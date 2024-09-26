@@ -6,172 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Components</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@2.0.2"
+        integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 </head>
 
 <body>
-    <script src="index.js"></script>
+    <script src="static/script.js"></script>
     <header>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                hx-swap="innerHTML" id="page-select">
+                <option selected></option>
+                <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
+                <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
+                <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
+                <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
+                <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
+                <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
+                <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
+                <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
+                <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
+                <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
+            </select>
+            <div class="centred-column">
+                <input type="checkbox" id="switch" title="See 'Switch' for mor info" />
+            </div>
+        </nav>
         <h1>Web Components</h1>
-        <h2>With Minimal JavaScript</h2>
     </header>
     <main>
-        <section class="card">
-            <h3>JavaScript Out, CSS & HTML In</h3>
-            <p>JavaScript frameworks are great. They allow you to create web apps with rich functionality, but at the
-                cost of having to learn the ins and outs of how that framework implements that functionality, all
-                the while bloating your project with tonnes of packages.</p>
-            <p>We go to frameworks because they allow us to build complex components. But many of these 'complex'
-                components can be built with just the Holy Trinity&#8482; of web develeopment (HTML, CSS and
-                JavaScript). A lot of the time you don't even need JavaScript.</p>
-            <p>These components are mainly inspired by <a href="https://www.youtube.com/watch?v=IP_rtWEMR0o"
-                    target="_blank">this</a> talk by Kilian Valkhof and
-                <a href="https://www.youtube.com/watch?v=PL3Odw-k8W4" target="_blank">this</a> video by the youtuber
-                Coding2GO, but also other places across the web where I've been able to take inspiriation<sup>*</sup>
-                from others.
+        <section class="card" id="content">
+            <h2>Without Frameworks</h2>
+            <p>
+                JavaScript frameworks are great. They allow you to create web apps with rich functionality and complex
+                components, but they come at a cost: bloating your countless packages and arcane methods of bundling
+                and transpiling.
             </p>
-            <p><sup>*</sup> Read: nicked. I've tried to credit where I've taken inspiration from, but if I've missed
-                something please let me know.</p>
-        </section>
-
-        <section class="card">
-            <h3>Switch it Up</h3>
-            <p>A modern approach to the switch with no JavaScript. This replicates the switch type that is currently
-                only availabe in safari, but hopefully will be added to other browsers soon.</p>
-            <div class="centred-column">
-                <label>
-                    <input type="checkbox" id="switch" />
-                    Dark Mode<sup>*</sup>
-                </label>
-            </div>
-            <p><sup>*</sup> This switch does use a bit of JavaScript to set dark or light mode, but it comes to less
-                than 14 lines. It is possible to toggle darkmode on or off with only css as per Coding2GO's video.
-                This implementation, while requiing some code, checks if the user has a preference for darkmode and
-                defaults the page accordingly while still allowing the user to flip between light and dark.</p>
-        </section>
-
-        <section class="card">
-            <h3>HTML, you Autocomplete Me</h3>
-            <p>An autocomplete input using only HTML, specifically the <code>&lt;datalist&gt;</code> tag</p>
-            <div class="centred-column">
-                <input type="text" list="my-list" />
-                <datalist id="my-list">
-                    <option>apples</option>
-                    <option>pears</option>
-                    <option>oranges</option>
-                    <option>lemons</option>
-                </datalist>
-            </div>
-        </section>
-
-        <section class="card">
-            <h3>All the Colours of the Rainbow</h3>
-            <p>This is just an <code>&lt;input&gt;</code> of type 'color'. No canvas, it's browser native, and you can
-                even select a colour that is on the page, which can't be done with a JavaScript approach.</p>
-            <div class="centred-row">
-                <label for="coloru">Pick a colour: <input type="color" id="colour"></label>
-            </div>
-        </section>
-
-        <section class="card">
-            <h3>Accordion To Some</h3>
-            <p>This is the HTML native <code>&lt;details&gt;</code> tag combined with the <code>&lt;summary&gt;</code>
-                tag for the heading</p>
+            <p>
+                Many of these 'complex' components can be built with just the Holy Trinity&#8482; of web development
+                (HTML, CSS and JavaScript). A lot of the time you don't even need JavaScript, or at best only a
+                smidgen. With a canny use of only the first two you can create some use functionality without
+                installing a single package.
+            </p>
+            <p>
+                When something is too comlex for just HTML and CSS to achieve, there still might not be any need for
+                javascript (kind of) thanks to a new kid on the block with some old school ideas:
+                <a href="https://htmx.org/" target="_blank">htmx</a>, and it's friend
+                <a href="https://hyperscript.org/" target="_blank">hyperscript</a>. Routin, state management and DOM
+                Manipulation without having to write a line of javascript
+            </p>
+            <p>
+                These components are mainly inspired by
+                <a href="https://www.youtube.com/watch?v=IP_rtWEMR0o" target="_blank">this</a> talk by Kilian Valkhof
+                and <a href="https://www.youtube.com/watch?v=PL3Odw-k8W4" target="_blank">this</a> video by the
+                youtuber Coding2GO, but also other places across the web where I've been able to take inspiriation
+                <sup class="footnote" _="on click get the next <details/> then toggle @open on it">[1]</sup> from
+                others.
+            </p>
             <details>
-                <summary>Click me to open or close</summary>
-                <p>This is a heck of a lot of text you might not want displayed by default. If you do want it displayed
-                    by default you can add the <code>open</code> property to the details tag and it will be displayed.
+                <summary>
+                    <hr>
+                </summary>
+                <p>
+                    <sup>[1]</sup> Read: nicked. I've tried to credit where I've taken inspiration from, but if I've
+                    missed
+                    something please let me know.
                 </p>
-                <p>A smidgen of CSS has been added to the <code>&lt;summary&gt;</code> tag to make it clear when you
-                    hover over it that it can be interacted with.</p>
             </details>
-        </section>
-
-        <section class="card">
-            <h3>Dropdown with the Sickness</h3>
-            <p>You can make a dropdown menu without JavaScript, and there are multiple ways to do this. In this instance
-                I'm making use of an <code>&lt;input type="checkbox"&gt;</code> element. This can also be achieved with
-                an
-                <code>&lt;a&gt;</code> tag as you can see <a href="https://codepen.io/markcaron/pen/wdVmpB"
-                    target="_blank">here</a> (which is where I lifted the example from).
-            </p>
-            <div class="centred-column">
-                <div class="dropdown">
-                    <input type="checkbox" id="my-dropdown" value="" name="my-checkbox">
-                    <label for="my-dropdown" data-toggle="dropdown">
-                        Choose one
-                    </label>
-                    <ul>
-                        <li><a href="https://dictionary.cambridge.org/dictionary/english/spring#:~:text=the%20season%20of%20the%20year%20between%20winter%20and%20summer%2C%20lasting%20from%20March%20to%20June%20north%20of%20the%20equator%2C%20and%20from%20September%20to%20December%20south%20of%20the%20equator%2C%20when%20the%20weather%20becomes%20warmer%2C%20leaves%20and%20plants%20start%20to%20grow%20again%20and%20flowers%20appear%3A"
-                                target="_blank">Spring</a></li>
-                        <li><a href="https://dictionary.cambridge.org/dictionary/english/spring#:~:text=a%20piece%20of%20curved%20or%20bent%20metal%20that%20can%20be%20pressed%20into%20a%20smaller%20space%20but%20then%20returns%20to%20its%20usual%20shape%3A"
-                                target="_blank">Spring</a></li>
-                        <li><a href="https://dictionary.cambridge.org/dictionary/english/spring#:~:text=a%20place%20where%20water%20naturally%20flows%20out%20from%20the%20ground%3A"
-                                target="_blank">Spring</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="card">
-            <h3>Start a Dialog</h3>
-            <p> This is a native HTML element <code>&lt;dialog&gt;</code>. This does require a bit of JavaScript to make
-                use of the dialog api, but significantly less than a framework or package would make you use.</p>
-            <div class="centred-column">
-                <button id="open-dialog-button">Open Dialog<sup>*</sup></button>
-            </div>
-            <p><sup>*</sup> This dialog will open with a simple animation if you're using firefox or chrome/chromium.
-                Hopefully this will be added to all browsers soon.</p>
-            <dialog id="modal-dialog">
-                <form method="dialog">
-                    <h1>A simple dialog with a <code>&lt;form&gt;</code></h1>
-                    <div class="centred-column">
-                        <input type="text" placeholder="Enter your name">
-                        <button type="submit">Close</button>
-                    </div>
-                </form>
-            </dialog>
-        </section>
-
-        <section class="card">
-            <h3>Size Doesn't Matter</h3>
-            <p>With <code>resize</code> you can make any inline element for which the <code>overflow</code> property
-                is set to <code>hidden</code> resizable, across either axis or both.</p>
-            <div class="centred-row">
-                <div class="box resize-vertical">
-                    <p>Vertical</p>
-                </div>
-                <div class="box resize-horizontal">
-                    <p>Horizontal</p>
-                </div>
-                <div class="box resize-both">
-                    <p>Both</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h3>New Morphism, New You</h3>
-            <p>You can make hoverable elements have a shadow effect using the <code>hover</code> pseudo-selector and
-                setting its <code>box-shadow</code> property with two values.</p>
-            <div class="centred-column">
-                <div class="box morph">
-                    <p>Hover</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h3>Making The Gradient</h3>
-            <p>With the <code>linear-gradient</code> property you can make a gradient background for any element. This
-                usually doesn't work with text, but when combined with <code>background-clip: text</code> and
-                <code>color: transparent</code> you can make headings that will break your eyes.
-            </p>
-            <div class="centred-column">
-                <h3 class="gradient">Richard Of York Gave Battle In Vain</h3>
-            </div>
         </section>
     </main>
 

@@ -1,0 +1,17 @@
+<h2>Start a Dialog</h2>
+<p> This is a native HTML element <code>&lt;dialog&gt;</code>. This does require a bit of JavaScript to make
+    use of the dialog api, but significantly less than a framework or package would make you use.</p>
+<div class="centred-column">
+    <button id="open-dialog-button">Open Dialog<sup>*</sup></button>
+</div>
+<p><sup>*</sup> This dialog will open with a simple animation if you're using firefox or chrome/chromium.
+    Hopefully this will be added to all browsers soon.</p>
+<dialog id="modal-dialog">
+    <form method="dialog">
+        <h1>A simple dialog with a <code>&lt;form&gt;</code></h1>
+        <div class="centred-column">
+            <input type="text" placeholder="Enter your name">
+            <button type="submit">Close</button>
+        </div>
+    </form>
+</dialog>
