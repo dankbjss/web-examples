@@ -1,0 +1,87 @@
+.card {
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.centred-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.centred-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.box {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-background);
+    overflow: auto;
+}
+
+summary:hover {
+    cursor: pointer;
+}
+
+details > summary {
+    list-style: none;
+}
+
+.footnote:hover {
+    cursor: help;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+form #other-text {
+    display: none;
+}
+
+form:has(#other:checked) #other-text {
+    display: block;
+}
+
+.resize-vertical {
+    resize: vertical;
+}
+
+.resize-horizontal {
+    resize: horizontal;
+}
+
+.resize-both {
+    resize: both;
+}
+
+.morph {
+    background: var(--secondary-color);
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.morph:hover {
+    box-shadow: 12px 12px 12px var(--text-color), -10px -10px 10px var(--secondary-color);
+    transition: .2s ease-in-out box-shadow;
+}
+
+.gradient {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-clip: text;
+    color: transparent;
+}

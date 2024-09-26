@@ -1,0 +1,23 @@
+nav {
+    background-color: var(--card-background);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    a.active {
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        background-color: var(--button-background);
+        color: var(--button-color);
+    }
+
+    a.active:hover {
+        background-color: var(--button-hover-background);
+        color: var(--button-color)
+    }
+}

@@ -1,0 +1,22 @@
+#modal-dialog {
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* Distinguish between the top and bottom layers when opening a modal dialog  */
+#modal-dialog::backdrop {
+    background: #fff5;
+    backdrop-filter: blur(4px);
+}
+
+/* Transition the dialog (currently only in firefox & chromium) */
+#modal-dialog {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+
+    @starting-style {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}

@@ -1,0 +1,10 @@
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 1.5rem;
+    --font-size-small: 0.875rem;
+    --card-radius: 8px;
+    --button-border-radius: 12px;
+    --button-padding: 10px 20px;
+    --button-font-size: 1rem;
+}
