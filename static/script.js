@@ -9,15 +9,15 @@
  * @param {function} callback - The callback function to be executed when the event is triggered.
  * @param {HTMLElement} [parent=document] - The parent element to which the event listener is attatched.
  */
-function addGlobalEventListner(type, selector, callback, parent = document) {
+function addGlobalEventListener(type, selector, callback, parent = document) {
     parent.addEventListener(type, (event) => {
         if (event.target.matches(selector)) {
             callback(event);
         }
     });
-};
+}
 
-addGlobalEventListner('click', '#open-dialog-button', (e) => {
+addGlobalEventListener('click', '#open-dialog-button', (e) => {
     const modalDialog = document.getElementById('modal-dialog');
     modalDialog.showModal();
 });
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', currentTheme);
     themeToggleCheckbox.checked = currentTheme === 'dark';
 
-    addGlobalEventListner('change', '#theme-switch', () => {
+    addGlobalEventListener('change', '#theme-switch', () => {
         const newTheme = themeToggleCheckbox.checked ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
