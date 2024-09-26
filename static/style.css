@@ -1,22 +1,26 @@
-/* Variables for colors and fonts */
+/* Root sizes and fonts */
 :root {
-    --text-color: #333;
-    --primary-color: #4CAF50;
-    --secondary-color: #f1f1f1;
     --font-family: 'Roboto', sans-serif;
     --font-size-base: 16px;
     --font-size-large: 1.5rem;
     --font-size-small: 0.875rem;
-    --card-background: #f9f9f9;
-    --card-border: #ddd;
-    --card-shadow: rgba(0, 0, 0, 0.1);
     --card-radius: 8px;
-    --button-background: #4CAF50;
-    --button-color: #f9f9f9;
-    --button-hover-background: #45a049;
     --button-border-radius: 12px;
     --button-padding: 10px 20px;
     --button-font-size: 1rem;
+}
+
+/* light Theme colors */
+[data-theme="light"] {
+    --text-color: #333;
+    --primary-color: #4CAF50;
+    --secondary-color: #f1f1f1;
+    --card-background: #f9f9f9;
+    --button-background: #4CAF50;
+    --card-border: #ddd;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --button-color: #f9f9f9;
+    --button-hover-background: #45a049;
     --link-color: #4CAF50;
     --link-hover-color: #45a049;
     --input-background: #f9f9f9;
@@ -24,6 +28,7 @@
     --input-text-color: #000;
 }
 
+/* dark Theme colors */
 [data-theme="dark"] {
     --text-color: #f1f1f1;
     --primary-color: #2196F3;
