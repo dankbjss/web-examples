@@ -23,12 +23,12 @@ addGlobalEventListner('click', '#open-dialog-button', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleCheckbox = document.getElementById('switch');
+    const themeToggleCheckbox = document.getElementById('theme-switch');
     const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', currentTheme);
     themeToggleCheckbox.checked = currentTheme === 'dark';
 
-    addGlobalEventListner('change', '#switch', () => {
+    addGlobalEventListner('change', '#theme-switch', () => {
         const newTheme = themeToggleCheckbox.checked ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
