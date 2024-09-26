@@ -22,6 +22,19 @@ addGlobalEventListener('click', '#open-dialog-button', (e) => {
     modalDialog.showModal();
 });
 
+addGlobalEventListener('click', '#open-components-button', (e) => {
+    const componentsDialog = document.getElementById('components-dialog');
+    componentsDialog.showModal();
+});
+
+addGlobalEventListener('click', '.close-dialog-button', (e) => {
+    const dialog = e.target.closest('dialog');
+    dialog.close();
+});
+
+addGlobalEventListener('click',)
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleCheckbox = document.getElementById('theme-switch');
     const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

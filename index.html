@@ -17,30 +17,66 @@
 <body>
     <script src="static/script.js"></script>
     <header>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <label for="page-select">Components:
-                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
-                        hx-swap="innerHTML" id="page-select">
-                    <option selected></option>
-                    <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
-                    <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
-                    <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
-                    <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
-                    <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
-                    <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
-                    <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
-                    <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
-                    <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
-                    <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
-                </select>
-            </label>
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="active nav-item">Home</a></li>
+                <li class="nav-item has-dropdown">
+<!--                    <a href="#">Components</a>-->
 
-            <div class="centred-column">
-                <label for="theme-switch">
-                    <input type="checkbox" class="switch" id="theme-switch" />
-                </label>
-            </div>
+                    <button id="open-components-button">Components</button>
+                    <dialog id="components-dialog">
+                            <ul class="nav-dialog-list">
+                                <li>
+                                    <button
+                                            class="close-dialog-button"
+                                            hx-get="examples/accordion.html"
+                                            hx-trigger="click"
+                                            hx-target="#content"
+                                            hx-swap="innerHTML"
+                                    >Accordion</button>
+                                </li>
+                                <li>
+                                    <button
+                                            class="close-dialog-button"
+                                            hx-get="examples/autocomplete.html"
+                                            hx-trigger="click"
+                                            hx-target="#content"
+                                            hx-swap="innerHTML"
+                                    >Autocomplete</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/chip.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Chip</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/colour.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Colour</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/dialog.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Dialog</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/footnote.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Footnote</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/gradient.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Gradient</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/new-morphism.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">New Morphism</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/resize.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Resize</button>
+                                </li>
+                                <li class="dropdown-item">
+                                    <button class="close-dialog-button" hx-get="examples/switch.html" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">Switch</button>
+                                </li>
+                            </ul>
+                    </dialog>
+                </li>
+                <li class="nav-item">
+                    <label for="theme-switch">
+                        <input type="checkbox" class="switch" id="theme-switch" />
+                    </label>
+                </li>
+            </ul>
         </nav>
         <h1>Web Components</h1>
     </header>

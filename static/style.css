@@ -111,29 +111,70 @@ code {
 }
 
 /* Navbar */
-nav {
+.navbar {
     background-color: var(--card-background);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    a.active {
-        float: left;
-        display: block;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        background-color: var(--button-background);
-        color: var(--button-color);
-    }
-
-    a.active:hover {
-        background-color: var(--button-hover-background);
-        color: var(--button-color)
-    }
 }
+
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.dropdown {
+    opacity: 0;
+    position: absolute;
+    width: 500px;
+    z-index: 2;
+    background: var(--card-background);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 3rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
+
+    transform: translateX(-40%);
+    transition: opacity .15s ease-out;
+}
+
+.dropdown-item a {
+    width: 100%;
+    height: 100%;
+}
+
+.has-dropdown:focus-within .dropdown   {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+ul.nav-dialog-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+a.active {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: var(--button-background);
+    color: var(--button-color);
+}
+ a.active:hover {
+     background-color: var(--button-hover-background);
+     color: var(--button-color)
+ }
 
 /* Button styles */
 button {
