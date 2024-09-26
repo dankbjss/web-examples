@@ -20,8 +20,12 @@
         <nav>
             <a href="index.html" class="active">Home</a>
             <label for="page-select">Components:
-                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
-                        hx-swap="innerHTML" id="page-select">
+                <select
+                        _="on change get my options[my selectedIndex] then trigger selected on it"
+                        hx-target="#content"
+                        hx-swap="innerHTML"
+                        id="page-select"
+                >
                     <option selected></option>
                     <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
                     <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
@@ -44,6 +48,7 @@
         </nav>
         <h1>Web Components</h1>
     </header>
+
     <main>
         <section class="card" id="content">
             <h2>Without Frameworks</h2>

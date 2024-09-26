@@ -7,7 +7,7 @@
  * @param {string} type - The type of event to listen for.
  * @param {string} selector - The CSS selector for the target element(s).
  * @param {function} callback - The callback function to be executed when the event is triggered.
- * @param {HTMLElement} [parent=document] - The parent element to which the event listener is attatched.
+ * @param {HTMLElement} [parent=document] - The parent element to which the event listener is attached.
  */
 function addGlobalEventListener(type, selector, callback, parent = document) {
     parent.addEventListener(type, (event) => {
