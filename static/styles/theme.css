@@ -1,33 +1,33 @@
 [data-theme="light"] {
-    --text-color: #1a1a1a; /* Darker text for better contrast */
+    --text-color: #1a1a1a;
     --primary-color: #6200ea;
-    --secondary-color: #e0e0e0; /* Slightly darker for better contrast */
+    --secondary-color: #e0e0e0;
     --card-background: #ffffff;
     --button-background: #6200ea;
-    --card-border: #b0b0b0; /* Darker border for better contrast */
-    --card-shadow: rgba(0, 0, 0, 0.1); /* Slightly darker shadow */
+    --card-border: #b0b0b0; 
+    --card-shadow: rgba(0, 0, 0, 0.1);
     --button-color: #ffffff;
     --button-hover-background: #3700b3;
     --link-color: #6200ea;
     --link-hover-color: #3700b3;
     --input-background: #ffffff;
-    --input-border: #8a8a8a; /* Darker border for better contrast */
-    --input-text-color: #1a1a1a; /* Darker text for better contrast */
+    --input-border: #8a8a8a; 
+    --input-text-color: #1a1a1a; 
 }
 
 [data-theme="dark"] {
-    --text-color: #e0e0e0; /* Lighter text for better contrast */
-    --primary-color: #1e88e5; /* Slightly lighter for better contrast */
-    --secondary-color: #444; /* Slightly lighter for better contrast */
-    --card-background: #333; /* Slightly lighter for better contrast */
-    --card-border: #222; /* Darker border for better contrast */
-    --card-shadow: rgba(0, 0, 0, 0.6); /* Slightly darker shadow */
+    --text-color: #e0e0e0; 
+    --primary-color: #1e88e5; 
+    --secondary-color: #444;
+    --card-background: #333;
+    --card-border: #222;
+    --card-shadow: rgba(0, 0, 0, 0.6);
     --button-background: #1e88e5;
-    --button-hover-background: #1565c0; /* Slightly lighter for better contrast */
+    --button-hover-background: #1565c0;
     --button-color: #ffffff;
     --link-color: #1e88e5;
-    --link-hover-color: #1565c0; /* Slightly lighter for better contrast */
-    --input-background: #444; /* Slightly lighter for better contrast */
-    --input-border: #333; /* Darker border for better contrast */
-    --input-text-color: #e0e0e0; /* Lighter text for better contrast */
+    --link-hover-color: #1565c0;
+    --input-background: #444;
+    --input-border: #333;
+    --input-text-color: #e0e0e0;
 }
