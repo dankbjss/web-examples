@@ -20,4 +20,21 @@ nav {
         background-color: var(--button-hover-background);
         color: var(--button-color)
     }
+
+    label {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    label>span {
+        font-size: small;
+        transition: all .2s;
+        transform-origin: top left;
+    }
+
+    label>input[placeholder=" "]:not(:focus):placeholder-shown+span {
+        transform: translateY(1em) scale(1.25);
+        pointer-events: none;
+        opacity: .5
+    }
 }
