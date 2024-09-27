@@ -19,13 +19,9 @@
     <header>
         <nav>
             <a href="index.html" class="active">Home</a>
-            <label for="page-select">Components:
-                <select
-                        _="on change get my options[my selectedIndex] then trigger selected on it"
-                        hx-target="#content"
-                        hx-swap="innerHTML"
-                        id="page-select"
-                >
+            <label for="component-nav-select">
+                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                    hx-swap="innerHTML" class="page-select" id="component-nav-select">
                     <option selected></option>
                     <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
                     <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
@@ -33,11 +29,19 @@
                     <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
                     <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
                     <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
+                    <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
+                </select>
+                <span>Components</span>
+            </label>
+            <label>
+                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                    hx-swap="innerHTML" class="page-select" id="component-nav-select">
+                    <option selected></option>
                     <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
                     <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
-                    <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
                     <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
                 </select>
+                <span>Styles</span>
             </label>
 
             <div class="centred-column">
