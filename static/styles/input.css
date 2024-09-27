@@ -1,4 +1,5 @@
 input[type="text"],
+input[type="colour"],
 select,
 textarea {
     min-width: 8rem;
@@ -16,6 +17,7 @@ textarea {
 
 input[type="text"]:focus,
 select:focus,
+input[type="colour"]:focus,
 textarea:focus {
     border-color: var(--primary-color);
     outline: transparent;
