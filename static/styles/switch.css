@@ -7,7 +7,7 @@
     width: 2.75rem;
     vertical-align: middle;
     border-radius: 2rem;
-    box-shadow: 0 1px 3px #0003 inset;
+    box-shadow: 0 1px 3px var(--card-shadow) inset;
     transition: 0.25s linear background;
 }
 
@@ -30,11 +30,16 @@
     background: var(--primary-color);
 }
 
+.switch:not(:checked), 
+.switch:not(:checked):focus-visible {
+    background-color: var(--primary-color);
+}
+
 .switch:checked::before {
     transform: translateX(1rem);
 }
 
 .switch:focus-visible {
-    outline: 2px solid dodgerblue;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
