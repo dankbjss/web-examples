@@ -17,20 +17,47 @@ function addGlobalEventListener(type, selector, callback, parent = document) {
     });
 }
 
-addGlobalEventListener('click', '#open-dialog-button', (e) => {
-    const modalDialog = document.getElementById('modal-dialog');
-    modalDialog.showModal();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleCheckbox = document.getElementById('theme-switch');
+/**
+ * Loads the preferred colour scheme from local storage or the user's system settings and sets the theme accordingly.
+ * @param themeToggleCheckbox {HTMLInputElement} - An <input.switch/> of type checkbox that toggles the theme.
+ */
+function loadPreferredColourScheme(themeToggleCheckbox) {
     const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', currentTheme);
     themeToggleCheckbox.checked = currentTheme === 'dark';
+}
 
-    addGlobalEventListener('change', '#theme-switch', () => {
-        const newTheme = themeToggleCheckbox.checked ? 'dark' : 'light';
+const switchTheme = {
+    type: 'change',
+    selector: '#theme-switch',
+    callback: (event) => {
+        const newTheme = event.target.checked ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-    });
+    },
+    add: function(){
+        addGlobalEventListener(this.type, this.selector, this.callback)
+    }
+};
+
+const toggleNavPopover = {
+    type: 'change',
+    selector: 'select',
+    callback: (event) => {
+        const selectedClass = event.target.className;
+        if (selectedClass.match('page-select')) {
+            const navMenuPopover = document.getElementById('nav-menu-popover');
+            navMenuPopover.togglePopover();
+        }
+    },
+    add: function(){
+        addGlobalEventListener(this.type, this.selector, this.callback)
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeSwitch = document.getElementById('theme-switch');
+    loadPreferredColourScheme(themeSwitch);
+    switchTheme.add();
+    toggleNavPopover.add();
 });
