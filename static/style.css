@@ -51,6 +51,19 @@
     }
 }
 
+@media (max-width: 660px) {
+    #nav-menu-popover:popover-open {
+        width: 100%;
+        height: fit-content;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+}
+
 @media (max-width: 600px) {
     body {
         font-size: var(--font-size-small);
@@ -64,16 +77,11 @@
         padding: 0.5rem;
     }
 
-    header {
-        text-align: left;
-    }
-
     section {
         padding: 0.5rem;
     }
 
     button {
-        width: 100%;
         padding: 1rem;
     }
 
@@ -83,7 +91,8 @@
     }
 }
 
-@media (max-width: 400px) {
+/* Chrome Mobile Breakpoint */
+@media (max-width: 418px) {
     h1 {
         font-size: 1.25rem;
     }
@@ -96,15 +105,23 @@
         font-size: 0.875rem;
     }
 
+    h3.nav-title {
+        display: none;
+    }
+
     button {
         font-size: 0.875rem;
-        width: auto;
-        padding: 0.5rem 1rem;
     }
 
     input[type="text"],
     textarea {
         font-size: 0.75rem;
+    }
+
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
