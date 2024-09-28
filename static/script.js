@@ -34,6 +34,9 @@ const switchTheme = {
         const newTheme = event.target.checked ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+    },
+    add: function(){
+        addGlobalEventListener(this.type, this.selector, this.callback)
     }
 };
 
@@ -42,19 +45,19 @@ const toggleNavPopover = {
     selector: 'select',
     callback: (event) => {
         const selectedClass = event.target.className;
-        console.log(event.target)
         if (selectedClass.match('page-select')) {
             const navMenuPopover = document.getElementById('nav-menu-popover');
             navMenuPopover.togglePopover();
         }
+    },
+    add: function(){
+        addGlobalEventListener(this.type, this.selector, this.callback)
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const themeSwitch = document.getElementById('theme-switch');
     loadPreferredColourScheme(themeSwitch);
-
-    addGlobalEventListener(switchTheme.type, switchTheme.selector, switchTheme.callback);
-
-    addGlobalEventListener(toggleNavPopover.type, toggleNavPopover.selector, toggleNavPopover.callback);
+    switchTheme.add();
+    toggleNavPopover.add();
 });
