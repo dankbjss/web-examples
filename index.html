@@ -18,39 +18,44 @@
     <script src="static/script.js"></script>
     <header>
         <nav>
-            <a href="index.html" class="active">Home</a>
-            <label for="component-nav-select">
-                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
-                    hx-swap="innerHTML" class="page-select" id="component-nav-select">
-                    <option selected></option>
-                    <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
-                    <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
-                    <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
-                    <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
-                    <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
-                    <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
-                    <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
-                </select>
-                <span>Components</span>
-            </label>
-            <label>
-                <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
-                    hx-swap="innerHTML" class="page-select" id="component-nav-select">
-                    <option selected></option>
-                    <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
-                    <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
-                    <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
-                </select>
-                <span>Styles</span>
-            </label>
-
+            <button id="nav-menu-button" class="round-icon" popovertarget="nav-menu-popover" popovertargetaction="show">
+                <img src="static/assets/menu-icon.png" alt="menu icon" class="icon" height="10">
+            </button>
+            <div id="nav-menu-popover" class="menu-items" popover>
+                <a href="index.html" class="active"><img src="static/assets/home-icon.png" height="10" alt="home page icon"></a>
+                <label for="component-nav-select">
+                    <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                            hx-swap="innerHTML" class="page-select" id="component-nav-select">
+                        <option selected></option>
+                        <option hx-get="examples/accordion.html" hx-trigger="selected">Accordion</option>
+                        <option hx-get="examples/autocomplete.html" hx-trigger="selected">Autocomplete</option>
+                        <option hx-get="examples/chip.html" hx-trigger="selected">Chip</option>
+                        <option hx-get="examples/colour.html" hx-trigger="selected">Colour</option>
+                        <option hx-get="examples/dialog.html" hx-trigger="selected">Dialog</option>
+                        <option hx-get="examples/footnote.html" hx-trigger="selected">Footnote</option>
+                        <option hx-get="examples/switch.html" hx-trigger="selected">Switch</option>
+                    </select>
+                    <span>Components</span>
+                </label>
+                <label>
+                    <select _="on change get my options[my selectedIndex] then trigger selected on it" hx-target="#content"
+                            hx-swap="innerHTML" class="page-select" id="style-nav-select">
+                        <option selected></option>
+                        <option hx-get="examples/gradient.html" hx-trigger="selected">Gradient</option>
+                        <option hx-get="examples/new-morphism.html" hx-trigger="selected">New Morphism</option>
+                        <option hx-get="examples/resize.html" hx-trigger="selected">Resize</option>
+                    </select>
+                    <span>Styles</span>
+                </label>
+            </div>
+            <h3 class="nav-title">Dank Design</h3>
             <div class="centred-column">
                 <label for="theme-switch">
                     <input type="checkbox" class="switch" id="theme-switch" />
                 </label>
             </div>
         </nav>
-        <h1>Web Components</h1>
+
     </header>
 
     <main>
@@ -97,10 +102,17 @@
 
     <footer>
         <p>
-            Assembled by <a href="https://github.com/dankbjss" target="_blank">Dan Kiernan</a>.s
-        </p>
-        <p>
+            Assembled by <a href="https://github.com/dankbjss" target="_blank">Dan Kiernan</a>
             Hosted on a <a href="https://github.com/dankbjss/web-examples" target="_blank">github</a> with pages.
+        </p>
+        <details>
+            <summary>
+                Icons from <a href="https://www.flaticon.com" target="_blank">flaticon.com</a>
+            </summary>
+            <a href="https://www.flaticon.com/free-icons/home-agent" title="home agent icons">Home agent icons created by alihmirza111 - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/menubar" title="menubar icons">Menubar icons created by NajmunNahar - Flaticon</a>
+        </details>
+        <p>
         </p>
     </footer>
 </body>
