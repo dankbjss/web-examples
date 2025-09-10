@@ -1,0 +1,29 @@
+<article
+  id="colour-picker"
+  class="card card-1"
+  x-data="{
+    hex: '#000000',
+    rgb: '',
+    hsl: '',
+    convertHex() {
+      this.rgb = hexToRgb(this.hex);
+      this.hsl = hexToHsl(this.hex);
+    },
+    init() {
+      this.convertHex();
+    }
+  }">
+  <h2>Colour Picker</h2>
+
+  <div class="form-input">
+    <label for="colour">Pick a colour:</label>
+    <input type="color" id="colour" x-model="hex" x-bind:input="convertHex()" />
+  </div>
+
+  <div class="card card-2" id="colour-values">
+    <h3>Colour Values</h3>
+    <p>Hex: <code x-text="hex"></code></p>
+    <p>RGB: <code x-text="rgb"></code></p>
+    <p>HSL: <code x-text="hsl"></code></p>
+  </div>
+</article>
