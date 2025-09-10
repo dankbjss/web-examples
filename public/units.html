@@ -1,0 +1,139 @@
+<article class="card card-1">
+  <h2>Units Converter</h2>
+
+  <fieldset x-data="{
+      unitType: 'mass',
+      fromUnit: 'g',
+      toUnit: 'kg',
+      amount: 1,
+      result: null,
+      convert() {
+        this.result = convertUnit(this.amount, this.fromUnit, this.toUnit);
+      },
+      unitDefaults: {
+        mass: { from: 'g', to: 'kg' },
+        temperature: { from: 'c', to: 'f' },
+        volume: { from: 'ml', to: 'l' },
+        distance: { from: 'cm', to: 'm' }
+      }
+    }"
+    x-effect="
+      if (unitDefaults[unitType]) {
+        fromUnit = unitDefaults[unitType].from;
+        toUnit = unitDefaults[unitType].to;
+        result = null;
+      }
+    "
+  >
+    <Legend>Units</Legend>
+
+    <div class="form-input">
+      <label for="unit-type">Type:</label>
+      <select id="unit-type" name="unit-type" x-model="unitType">
+        <option value="mass">Mass</option>
+        <option value="temperature">Temperature</option>
+        <option value="volume">Volume</option>
+        <option value="distance">Distance</option>
+      </select>
+    </div>
+
+    <div class="form-input">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" x-model.number="amount" step="any" />
+    </div>
+
+    <div class="form-input">
+      <label for="from-unit">From:</label>
+      <template x-if="unitType === 'mass'">
+        <select id="from-unit" name="from-unit" x-model="fromUnit">
+          <option value="g">Grams</option>
+          <option value="kg">Kilograms</option>
+          <option value="oz">Ounces</option>
+          <option value="lb">Pounds</option>
+        </select>
+        </template>
+
+        <template x-if="unitType === 'temperature'">
+          <select id="from-unit" name="from-unit" x-model="fromUnit">
+            <option value="c">Celsius</option>
+            <option value="c (fan)">Celsius (Fan Oven)</option>
+            <option value="f">Fahrenheit</option>
+          </select>
+        </template>
+
+        <template x-if="unitType === 'volume'">
+          <select id="from-unit" name="from-unit" x-model="fromUnit">
+            <option value="ml">Millilitres</option>
+            <option value="l">Litres</option>
+            <option value="fl oz">Fluid Ounces</option>
+            <option value="pt">Pints</option>
+            <option value="gal">Gallons</option>
+          </select>
+        </template>
+
+        <template x-if="unitType === 'distance'">
+          <select id="from-unit" name="from-unit" x-model="fromUnit">
+            <option value="cm">Centimetres</option>
+            <option value="m">Metres</option>
+            <option value="km">Kilometres</option>
+            <option value="in">Inches</option>
+            <option value="ft">Feet</option>
+            <option value="mi">Miles</option>
+            <option value="yd">Yards</option>
+          </select>
+        </template>
+      </select>
+    </div>
+
+    <div class="form-input">
+      <label for="to-unit">To:</label>
+      <template x-if="unitType === 'mass'">
+        <select id="to-unit" name="to-unit" x-model="toUnit">
+          <option value="g">Grams</option>
+          <option value="kg">Kilograms</option>
+          <option value="oz">Ounces</option>
+          <option value="lb">Pounds</option>
+        </select>
+        </template>
+
+        <template x-if="unitType === 'temperature'">
+          <select id="to-unit" name="to-unit" x-model="toUnit">
+            <option value="c">Celsius</option>
+            <option value="c (fan)">Celsius (Fan Oven)</option>
+            <option value="f">Fahrenheit</option>
+          </select>
+        </template>
+
+        <template x-if="unitType === 'volume'">
+          <select id="to-unit" name="to-unit" x-model="toUnit">
+            <option value="ml">Millilitres</option>
+            <option value="l">Litres</option>
+            <option value="fl oz">Fluid Ounces</option>
+            <option value="pt">Pints</option>
+            <option value="gal">Gallons</option>
+          </select>
+        </template>
+
+        <template x-if="unitType === 'distance'">
+          <select id="to-unit" name="to-unit" x-model="toUnit">
+            <option value="cm">Centimetres</option>
+            <option value="m">Metres</option>
+            <option value="km">Kilometres</option>
+            <option value="in">Inches</option>
+            <option value="ft">Feet</option>
+            <option value="mi">Miles</option>
+            <option value="yd">Yards</option>
+          </select>
+        </template>
+      </select>
+    </div>
+
+    <button type="button" x-on:click="convert()">Convert</button>
+
+    <div class="form-input">
+      <label for="result">Result:</label>
+      <output type="text" id="result" x-text="result"></output>
+    </div>
+  </fieldset>
+
+</article>
