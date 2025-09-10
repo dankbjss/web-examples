@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Tools</title>
+  <link rel="stylesheet" href="static/style.css">
+  <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="static/index.js" type="module"></script>
+  <script type="module">
+    import {
+      convertEcmaTimestamp,
+      convertIsoString,
+      convertUnit,
+      convertUnixTimestamp,
+      hexToRgb,
+      hexToHsl,
+      toScientificNotation
+    } from './static/index.js';
+
+    window.convertUnixTimestamp = convertUnixTimestamp;
+    window.convertEcmaTimestamp = convertEcmaTimestamp;
+    window.convertIsoString = convertIsoString;
+    window.hexToRgb = hexToRgb;
+    window.hexToHsl = hexToHsl;
+    window.toScientificNotation = toScientificNotation;
+    window.convertUnit = convertUnit;
+  </script>
+</head>
+
+<body>
+  <header
+    id="main-header"
+    x-data="{
+      toggleMenu() {
+        htmx.find('#main-menu').togglePopover();
+      }
+    }"
+  >
+    <h1>Web Tools</h1>
+    <button id="main-menu-button" popovertarget="main-menu" popovertargetaction="toggle">Menu</button>
+    <menu id="main-menu" popover>
+      <li>
+        <button
+          hx-get="home.html"
+          hx-target="main"
+          hx-swap="innerHTML"
+          x-on:click="toggleMenu()"
+        >
+          Home
+        </button>
+      </li>
+
+      <li>
+        <button
+          hx-get="colour-picker.html"
+          hx-target="main"
+          hx-swap="innerHTML"
+          x-on:click="toggleMenu()"
+        >
+          Colour Picker
+        </button>
+      </li>
+
+      <li>
+        <button
+          hx-get="timestamps.html"
+          hx-target="main"
+          hx-swap="innerHTML"
+          x-on:click="toggleMenu()"
+        >
+          Timestamps
+        </button>
+      </li>
+
+      <li>
+        <button
+          hx-get="numbers.html"
+          hx-target="main"
+          hx-swap="innerHTML"
+          x-on:click="toggleMenu()"
+        >
+          Numbers
+        </button>
+      </li>
+
+      <li>
+        <button
+          hx-get="units.html"
+          hx-target="main"
+          hx-swap="innerHTML"
+          x-on:click="toggleMenu()"
+        >
+          Units
+        </button>
+      </li>
+    </menu>
+  </header>
+
+  <main>
+    <article
+      hx-get="home.html"
+      hx-trigger="load once"
+      hx-swap="outerHTML"
+    ></article>
+
+  </main>
+
+  <footer id="main-footer">
+    <p>Assembled by <a href="https://github.com/dankbjss" target="_blank">Dan Kiernan</a>
+  </footer>
+</body>
+
+</html>

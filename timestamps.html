@@ -1,0 +1,108 @@
+<article id="timestamps" class="card card-1">
+  <h2>Timestamps</h2>
+
+  <div id="fieldsets-container">
+    <fieldset
+      x-data="{
+        isoString: '',
+        isoConversionOption: 'unix',
+        result: '',
+        convertIsoString() {
+          this.result = convertIsoString(this.isoString, this.isoConversionOption);
+        }
+      }">
+      <legend>ISO String</legend>
+
+      <div class="form-input">
+        <label for="iso-string-input">Enter an ISO 8601 string:</label>
+        <input type="text" id="iso-string-input" x-model="isoString" />
+      </div>
+
+      <div class="form-input">
+        <label for="iso-string-conversion-options">Convert to:</label>
+        <select id="iso-string-conversion-options" x-model="isoConversionOption">
+          <option value="unix">UNIX Timestamp</option>
+          <option value="ecma">ECMAScript Timestamp</option>
+        </select>
+      </div>
+
+      <button id="convert-iso-string-button" x-on:click="convertIsoString()">Convert</button>
+
+      <div class="form-input">
+        <label for="iso-string-output">Converted value:</label>
+        <output id="iso-string-output" x-text="result"></output>
+    </fieldset>
+
+    <fieldset
+      x-data="{
+        unixTimestamp: null,
+        unixConversionOption: 'iso',
+        unixResult: '',
+        convertUnixTimestamp() {
+          this.unixResult = convertUnixTimestamp(this.unixTimestamp, this.unixConversionOption);
+        }
+      }"
+    >
+      <legend>UNIX Timestamps</legend>
+      <div class="form-input">
+        <label for="unix-timestamp-input">Enter a UNIX timestamp:</label>
+        <input type="number" id="unix-timestamp-input" x-model.number="unixTimestamp" />
+      </div>
+
+      <div class="form-input">
+        <label for="unix-timestamp-conversion-options">Convert to:</label>
+        <select id="unix-timestamp-conversion-options" x-model="unixConversionOption">
+          <option value="iso">ISO 8601</option>
+          <option value="utc">UTC String</option>
+          <option value="locale">Locale String</option>
+          <option value="milliseconds">Milliseconds</option>
+          <option value="hours">Hours</option>
+          <option value="days">Days</option>
+        </select>
+      </div>
+
+      <button id="convert-unix-timestamp-button" x-on:click="convertUnixTimestamp()">Convert</button>
+
+      <div class="form-input">
+        <label for="unix-timestamp-output">Converted value:</label>
+        <output id="unix-timestamp-output" x-text="unixResult"></output>
+      </div>
+    </fieldset>
+
+    <fieldset
+      x-data="{
+        ecmaTimestamp: null,
+        ecmaConversionOption: 'iso',
+        ecmaResult: '',
+        convertEcmaTimestamp() {
+          this.ecmaResult = convertEcmaTimestamp(this.ecmaTimestamp, this.ecmaConversionOption);
+        },
+      }"
+    >
+      <legend>ECMAScript Timestamps</legend>
+      <div class="form-input">
+        <label for="ecmascript-timestamp-input">Enter an ECMAScript timestamp:</label>
+        <input type="number" id="ecmascript-timestamp-input" x-model.number="ecmaTimestamp" />
+      </div>
+
+      <div class="form-input">
+        <label for="ecmascript-timestamp-conversion-options">Convert to:</label>
+        <select id="ecmascript-timestamp-conversion-options" x-model="ecmaConversionOption">
+          <option value="iso">ISO 8601</option>
+          <option value="utc">UTC String</option>
+          <option value="locale">Locale String</option>
+          <option value="seconds">Seconds</option>
+          <option value="hours">Hours</option>
+          <option value="days">Days</option>
+        </select>
+      </div>
+
+      <button id="convert-ecma-timestamp-button" x-on:click="convertEcmaTimestamp()">Convert</button>
+
+      <div class="form-input">
+        <label for="ecma-timestamp-output">Converted value:</label>
+        <output id="ecma-timestamp-output" x-text="ecmaResult"></output>
+      </div>
+    </fieldset>
+  </div>
+</article>

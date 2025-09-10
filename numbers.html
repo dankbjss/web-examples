@@ -1,0 +1,44 @@
+<article class="card card-1" id="numbers">
+  <h2>Numbers</h2>
+
+  <fieldset
+    x-data="{
+      number: '',
+      includeDecimals: false,
+      precision: 0,
+      result: '',
+      convertToScientificNotation() {
+        const precision = this.includeDecimals ? this.precision : 0;
+        this.result = toScientificNotation(this.number, precision)
+      }
+    }"
+  >
+    <legend>Scientific Notation Converter</legend>
+    <div class="form-input">
+      <label for="scientific-notation-input">Enter a number:</label>
+      <input type="number" id="scientific-notation-input" name="scientific-notation-input" x-model.number="number" />
+    </div>
+
+    <div class="form-grid">
+      <div class="form-input">
+        <input type="checkbox" id="include-decimals" name="include-decimals" x-model="includeDecimals" />
+        <label for="include-decimals">
+          Include Decimals
+        </label>
+      </div>
+
+      <div class="form-input" x-show="includeDecimals">
+        <label for="precision">Precision:</label>
+        <input type="number" id="precision" name="precision" min="0" x-model="precision" />
+      </div>
+    </div>
+
+
+    <button type="button" x-on:click="convertToScientificNotation()">Convert</button>
+    <div class="form-input">
+      <label for="scientific-notation-result">Result:</label>
+      <output id="scientific-notation-result" x-html="result"></output>
+    </div>
+  </fieldset>
+
+</article>
