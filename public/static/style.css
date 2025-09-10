@@ -54,9 +54,10 @@ header#main-header {
   }
 
   &:popover-open {
-    position-anchor: --main-menu-button;
     position: fixed;
-    position-area: bottom;
+    top: calc(3rem + var(--size-1));
+    left: auto;
+    right: calc((100vw - min(clamp(350px, 80vw, 600px), 600px)) / 2 + var(--size-3));
     width: var(--size-12);
     background: var(--surface-2);
     border-radius: var(--radius-2);
@@ -69,6 +70,11 @@ header#main-header {
     margin: var(--size-2) 0 var(--size-2) 0;
     padding: 0;
 
+    @media (max-width: 685px) {
+      top: calc(min(1rem, 3vh) + var(--font-size-fluid-2));
+      right: calc((100vw - 90vw) / 2 + var(--size-3));
+    }
+
     li {
       margin: 0;
       padding: 0;
@@ -78,6 +84,17 @@ header#main-header {
         margin: 0;
       }
     }
+  }
+}
+
+@supports (anchor-name: --test) {
+  #main-menu:popover-open {
+    position: fixed;
+    top: unset;
+    right: unset;
+    left: unset;
+    position-anchor: --main-menu-button;
+    position-area: bottom;
   }
 }
 
