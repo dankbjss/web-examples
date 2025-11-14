@@ -15,9 +15,12 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: clamp(350px, 80vw, 600px);
+  max-width: clamp(350px, 80vw, 400px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
 
-  @media (max-width: 685px) {
+  @media (max-width: 600px) {
     max-width: 90vw;
   }
 }
@@ -101,18 +104,14 @@ header#main-header {
 main {
   overflow-y: scroll;
   height: 100%;
-  position: relative;
-  padding-bottom: var(--size-8)
+  /* position: relative; */
+  /* padding-bottom: var(--size-8); */
+  margin: 0 auto;
 }
 
 footer#main-footer {
   width: 100%;
   background: var(--surface-1);
-  position: fixed;
-  height: var(--size-8);
-  left: 0;
-  bottom: 0;
-  z-index: 10;
 
   p {
     position: relative;
@@ -120,6 +119,24 @@ footer#main-footer {
     z-index: 1;
     margin: var(--size-2) 0;
   }
+
+  menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--size-4);
+  }
+
+  a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--size-1);
+  }
+
+
 }
 
 h2,
@@ -254,5 +271,12 @@ fieldset {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     gap: var(--size-2);
+  }
+}
+
+@media (min-width: 600px) {
+  #precision,
+  label[for="include-decimals"] {
+    width: 50%;
   }
 }
