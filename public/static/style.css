@@ -15,7 +15,7 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: clamp(350px, 80vw, 400px);
+  max-width: clamp(350px, 80vw, 500px);
   display: grid;
   grid-template-rows: auto 1fr auto;
   justify-items: center;
@@ -104,8 +104,6 @@ header#main-header {
 main {
   overflow-y: scroll;
   height: 100%;
-  /* position: relative; */
-  /* padding-bottom: var(--size-8); */
   margin: 0 auto;
 }
 
@@ -135,8 +133,6 @@ footer#main-footer {
     align-items: center;
     gap: var(--size-1);
   }
-
-
 }
 
 h2,
@@ -258,6 +254,11 @@ fieldset {
   fieldset#contrast-checker {
     grid-template-rows: auto 1fr;
     grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 413px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
 
     .form-input {
       grid-template-columns: 1fr auto;
