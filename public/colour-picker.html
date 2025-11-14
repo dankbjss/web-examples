@@ -1,29 +1,87 @@
 <article
-  id="colour-picker"
+  id="colours"
   class="card card-1"
-  x-data="{
-    hex: '#000000',
-    rgb: '',
-    hsl: '',
-    convertHex() {
-      this.rgb = hexToRgb(this.hex);
-      this.hsl = hexToHsl(this.hex);
-    },
-    init() {
-      this.convertHex();
-    }
-  }">
-  <h2>Colour Picker</h2>
+  >
+  <h2>Colours</h2>
 
-  <div class="form-input">
-    <label for="colour">Pick a colour:</label>
-    <input type="color" id="colour" x-model="hex" x-bind:input="convertHex()" />
-  </div>
+  <fieldset 
+    id="colour-picker"
+    x-data="{
+      hex: '#000000',
+      rgb: '',
+      hsl: '',
+      convertHex() {
+        this.rgb = hexToRgb(this.hex);
+        this.hsl = hexToHsl(this.hex);
+      },
+      init() {
+        this.convertHex();
+      }
+    }"
+  >
+    <legend>Colour Picker</legend>
 
-  <div class="card card-2" id="colour-values">
-    <h3>Colour Values</h3>
-    <p>Hex: <code x-text="hex"></code></p>
-    <p>RGB: <code x-text="rgb"></code></p>
-    <p>HSL: <code x-text="hsl"></code></p>
-  </div>
+    <div class="form-input">
+      <label for="colour">Pick a colour:</label>
+      <input type="color" id="colour" x-model="hex" x-bind:input="convertHex()" />
+    </div>
+  
+    <div class="card card-2 colour-results" id="colour-values">
+      <h3>Colour Values</h3>
+      <ul>
+        <li>HEX: <code x-text="hex"></code></li>
+        <li>RGB: <code x-text="rgb"></code></li>
+        <li>HSL: <code x-text="hsl"></code></li>
+      </ul>
+    </div>
+  </fieldset>
+
+  <fieldset 
+    id="contrast-checker"
+    x-data="{
+      foreground: '#000000',
+      background: '#000000',
+      contrastRatio: '',
+      wcagAANormal: false,
+      wcagAALarge: false,
+      wcagAAANormal: false,
+      wcagAAALarge: false,
+
+      checkContrast() {
+        this.contrastRatio = contrastRatio(this.foreground, this.background);
+        const { aaNormal, aaLarge, aaaNormal, aaaLarge } = checkWcagCompliance(this.contrastRatio);
+        this.wcagAANormal = aaNormal;
+        this.wcagAALarge = aaLarge;
+        this.wcagAAANormal = aaaNormal;
+        this.wcagAAALarge = aaaLarge;
+      },
+      
+      init() {
+        this.checkContrast();
+      }
+    }"
+  >
+    <legend>Contrast Checker</legend>
+
+    <div class="form-input">
+      <label for="foreground-colour">Foreground:</label>
+      <input type="color" id="foreground-colour" x-model="foreground" x-bind:input="checkContrast()" />
+    </div>
+
+    <div class="form-input">
+      <label for="background-colour">Background:</label>
+      <input type="color" id="background-colour" x-model="background" x-bind:input="checkContrast()" />
+    </div>
+
+    <div class="card card-2 full-width colour-results" id="contrast-results">
+      <h3>Contrast Results</h3>
+      <ul>
+        <li>Contrast Ratio: <code x-text="contrastRatio"></code></li>
+        <li>WCAG AA (Normal Text): <code x-text="wcagAANormal ? 'Pass' : 'Fail'"></code></li>
+        <li>WCAG AA (Large Text): <code x-text="wcagAALarge ? 'Pass' : 'Fail'"></code></li>
+        <li>WCAG AAA (Normal Text): <code x-text="wcagAAANormal ? 'Pass' : 'Fail'"></code></li>
+        <li>WCAG AAA (Large Text): <code x-text="wcagAAALarge ? 'Pass' : 'Fail'"></code></li>
+      </ul>
+  </fieldset>
+
 </article>

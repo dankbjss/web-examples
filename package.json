@@ -3,11 +3,13 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun index.ts",
-    "build": "bun build src/index.ts --outdir=public/static"
+    "dev": "bun run build:dev && http-server public -c-1 -o",
+    "build:dev": "bun build src/index.ts --outdir=public/static",
+    "build": "bun build src/index.ts --outdir=dist --minify"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "http-server": "^14.1.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

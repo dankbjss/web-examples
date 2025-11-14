@@ -194,25 +194,57 @@ fieldset {
   }
 }
 
-#colour-picker {
-  .form-input {
-    margin: 0 auto;
-    max-width: fit-content;
-    margin-bottom: var(--size-2);
+#colours {
+  fieldset {
+    display: grid;
+    gap: var(--size-2);
+  }
 
-    input {
-      justify-self: center;
+  .form-input {
+      margin: 0 auto;
+      max-width: fit-content;
+      margin-bottom: var(--size-2);
+  }
+
+  .colour-results {
+    margin-inline: var(--size-fluid-3);
+
+    h3 {
+      margin-bottom: var(--size-2);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li:not(:last-child) {
+      margin-bottom: var(--size-2);
     }
   }
 
-  #colour-values {
-    margin-inline: var(--size-fluid-3);
+  fieldset#colour-picker {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
 
-    p {
-      display: grid;
-      gap: var(--size-1);
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: var(--size-2);
+    .form-input {
+      grid-template-rows: 1fr;
+      grid-template-columns: auto auto;
+
+      input {
+        justify-self: center;
+      }
+    }
+  }
+
+  fieldset#contrast-checker {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(2, 1fr);
+
+    .form-input {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: 1fr;
     }
   }
 }
